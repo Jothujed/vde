@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+{% block title %} | Services {% endblock %}
+{% block content %}
+
+{% load humanize %}
+{% load static %}
+<!-- WhatsApp Button -->
+<div class="whatsapp-button">
+    <a href="https://wa.me/260972923011?text=Hello%20Vaaka%20Dealer.%20">
+        <img src="{% static 'img/whatsApp.png' %}" alt="WhatsApp Icon">
+        <div class="circle"></div>
+    </a>
+</div>
+
+<style>
+    /* WhatsApp Button Styles */
+    .whatsapp-button {
+        position: fixed;
+        right: 20px; /* Adjust the right position as needed */
+        bottom: 90px; /* Adjust the bottom position as needed */
+        z-index: 1000;
+    }
+
+    .whatsapp-button a {
+        display: block;
+        width: 60px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+        background-color: none; /* WhatsApp green color */
+        border-radius: 50%;
+        text-align: center;
+        padding-top: 10px; /* Adjust the padding as needed */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .whatsapp-button img {
+        width: 40px; /* Adjust the icon size as needed */
+    }
+
+    .whatsapp-button .circle {
+        content: '';
+        border-radius: 1000px;
+        min-width: calc(300px + 12px);
+        min-height: calc(60px + 12px);
+        border: 6px solid #59CE72;
+        box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .whatsapp-button:hover .circle, .whatsapp-button:focus .circle {
+        opacity: 1;
+    }
+
+    .whatsapp-button::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 6px solid #59CE72;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: ring 1.5s infinite;
+    }
+
+    @keyframes ring {
+        0% {
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+    }
+</style>
+
+
+<!-- Services start -->
+<div class="services content-area" style="margin-top:50px;">
+    <div class="container">
+        <!-- Main title -->
+        <div class="main-title text-center">
+            <h1>Our <span>Services</span></h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">1</div>
+                    <div class="icon">
+                        <i class="flaticon-support-2"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Free Support</h3>
+                        <p>
+                            At Vaaka Dealer, we offer free support to our customers for any issues or queries they may have regarding their vehicles. Whether you need help with booking a service
+                             appointment, finding the best financing option, or getting a quote for a trade-in, our friendly and professional staff are always ready to assist you. You can 
+                             contact us by phone, email, or chat anytime you want. We value your satisfaction and loyalty, and we are committed to providing you with the best service possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">2</div>
+                    <div class="icon">
+                        <i class="flaticon-speed"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Super Fast</h3>
+                        <p>
+                            When you choose Vaaka Dealer, you can expect super fast service for your car. We know how important your time is, and we don’t want to keep you waiting. That’s why
+                             we have a team of skilled and experienced technicians who can perform any maintenance or repair work on your vehicle in a timely manner. Whether you need an oil 
+                             change, a tire rotation, or a brake check, we can get it done in no time. You can also book your service online and save time at the dealership.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">3</div>
+                    <div class="icon">
+                        <i class="flaticon-motor"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Repairing</h3>
+                        <p>
+                            If your car needs repairing, you can trust Vaaka Dealer to do it right. We have the latest tools and equipment to diagnose and fix any problem your vehicle may have. 
+                            We use only genuine parts and accessories that are compatible with your car’s make and model. We also offer a warranty on our workmanship and parts, so you can have 
+                            peace of mind knowing that your car is in good hands. No matter what kind of repair your car needs, we can handle it with care and expertise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">4</div>
+                    <div class="icon">
+                        <i class="flaticon-air-conditioner"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>AIR conditioning</h3>
+                        <p>
+                            Nothing beats the comfort of driving in a cool and fresh car. That’s why Vaaka Dealer offers air conditioning service for your vehicle. We can check and recharge your
+                             AC system, replace the filters, and clean the vents to ensure that your car’s interior is always comfortable and pleasant. We can also inspect and repair any leaks 
+                             or damages that may affect your AC performance. Don’t let the heat ruin your driving experience. Let us take care of your car’s air conditioning today.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">5</div>
+                    <div class="icon">
+                        <i class="flaticon-fuel"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Oil Change</h3>
+                        <p>
+                            One of the simplest but most important services for your car is an oil change. Oil lubricates and cools your engine, preventing it from overheating or wearing out 
+                            prematurely. That’s why you need to change your oil regularly according to your car’s manufacturer recommendations. At Vaaka Dealer, we offer oil change service for 
+                            your car. We use only high-quality oil that meets or exceeds your car’s specifications. We also check and top up other fluids such as coolant, brake fluid, power 
+                            steering fluid, and windshield washer fluid as part of our oil change service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">7</div>
+                    <div class="icon">
+                        <i class="flaticon-wheel"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Engine Repair</h3>
+                        <p>
+                            Your car’s engine is the heart of your vehicle. It powers your car’s performance and efficiency. That’s why it needs regular maintenance and repair to keep it 
+                            running smoothly and reliably. At Vaaka Dealer, we offer engine repair service for your car. We can check and tune up your engine, replace the spark plugs, belts,
+                             hoses, filters, and fluids, and fix any leaks or noises that may indicate a problem with your engine. We can also perform more complex repairs such as replacing the
+                              head gasket, timing belt, or piston rings if needed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">6</div>
+                    <div class="icon">
+                        <i class="flaticon-car-2"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Dealership</h3>
+                        <p>
+                            Vaaka Dealer is more than just a car dealer. We are a dealership that offers a complete range of services for your car needs. From sales to service, from financing to
+                             insurance, from parts to accessories, we have it all under one roof. You don’t have to go anywhere else to get what you need for your car. We are your one-stop shop 
+                             for everything related to cars. Come and visit us today and see for yourself why we are the best dealership in town.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">8</div>
+                    <div class="icon">
+                        <i class="flaticon-lock"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Security</h3>
+                        <p>
+                            At Vaaka Dealer, we take security seriously. We know how important it is to protect your car from theft, vandalism, or damage. That’s why we offer a range of security
+                             features and services for your vehicle. You can choose from different types of alarms, locks, trackers, cameras, and sensors that can deter or detect any unauthorized
+                              access to your car. You can also opt for our insurance coverage that can cover any losses or damages that may occur to your car. With Vaaka Dealer, you can rest 
+                              assured that your car is safe and secure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="number">9</div>
+                    <div class="icon">
+                        <i class="flaticon-deal"></i>
+                    </div>
+                    <div class="detail">
+                        <h3>Trusted Agents</h3>
+                        <p>
+                            Buying or selling a car can be a stressful and complicated process. That’s why you need trusted agents who can guide you through every step of the way. At Vaaka 
+                            Dealer, we have a team of certified and licensed agents who can help you find the best deal for your car. Whether you want to buy a new or used car, trade in your 
+                            old one, or sell it outright, we can help you with all the paperwork, financing, and registration. We also offer fair and transparent pricing, so you can be sure 
+                            that you are getting the best value for your money.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services end -->
+
+
+{% endblock %}

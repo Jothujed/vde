@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block title %} | Our Cars Inventory {% endblock %}
+{% block content %}
+
+{% load humanize %}
+{% load static %}
+<!-- WhatsApp Button -->
+<div class="whatsapp-button">
+    <a href="https://wa.me/260972923011?text=Hello%20Vaaka%20Dealer.%20">
+        <img src="{% static 'img/whatsApp.png' %}" alt="WhatsApp Icon">
+        <div class="circle"></div>
+    </a>
+</div>
+
+<style>
+    /* WhatsApp Button Styles */
+    .whatsapp-button {
+        position: fixed;
+        right: 20px; /* Adjust the right position as needed */
+        bottom: 90px; /* Adjust the bottom position as needed */
+        z-index: 1000;
+    }
+
+    .whatsapp-button a {
+        display: block;
+        width: 60px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+        background-color: none; /* WhatsApp green color */
+        border-radius: 50%;
+        text-align: center;
+        padding-top: 10px; /* Adjust the padding as needed */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .whatsapp-button img {
+        width: 40px; /* Adjust the icon size as needed */
+    }
+
+    .whatsapp-button .circle {
+        content: '';
+        border-radius: 1000px;
+        min-width: calc(300px + 12px);
+        min-height: calc(60px + 12px);
+        border: 6px solid #59CE72;
+        box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .whatsapp-button:hover .circle, .whatsapp-button:focus .circle {
+        opacity: 1;
+    }
+
+    .whatsapp-button::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 6px solid #59CE72;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: ring 1.5s infinite;
+    }
+
+    @keyframes ring {
+        0% {
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+    }
+</style>
+
+<!-- Featured car start -->
+<div class="featured-car content-area" style="margin-top:50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+
+                <div class="row">
+                  {% for car in cars %}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="car-box-3">
+                            <div class="car-thumbnail">
+                                <a href="{% url 'car_detail' car.id %}" class="car-img">
+                                    <div class="tag">For Sale</div>
+                                    <div class="price-box">
+                                        <span>K {{car.price | intcomma }}</span>
+                                    </div>
+                                    <img class="d-block w-100" src="{{car.car_photo.url}}" alt="car"  style="min-height: 262px; max-height: 262px;">
+                                </a>
+                                <div class="carbox-overlap-wrapper">
+                                    <div class="overlap-box">
+                                        <div class="overlap-btns-area">
+                                            <div class="car-magnify-gallery">
+                                                <a href="{{car.car_photo.url}}" class="overlap-btn">
+                                                    <i class="fa fa-expand"></i>
+                                                    <img class="hidden" src="{{car.car_photo.url}}">
+                                                </a>
+                                                {% if car.car_photo_1 %}
+                                                <a href="{{car.car_photo_1.url}}" class="hidden" >
+                                                    <img class="hidden" src="{{car.car_photo_1.url}}">
+                                                </a>
+                                                {% endif %}
+                                                {% if car.car_photo_2 %}
+                                                <a href="{{car.car_photo_2.url}}" class="hidden">
+                                                    <img class="hidden" src="{{car.car_photo_2.url}}">
+                                                </a>
+                                                {% endif %}
+                                                {% if car.car_photo_3 %}
+                                                <a href="{{car.car_photo_3.url}}" class="hidden">
+                                                    <img class="hidden" src="{{car.car_photo_3.url}}">
+                                                </a>
+                                                {% endif %}
+                                                {% if car.car_photo_4 %}
+                                                <a href="{{car.car_photo_4.url}}" class="hidden" >
+                                                    <img class="hidden" src="{{car.car_photo_4.url}}">
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							
+                            <div class="detail">
+                                <h1 class="title">
+                                    <small style="font-size:9px;">click &nbsp;</small><i class="fa fa-hand-o-right">&nbsp;</i><a href="{% url 'car_detail' car.id %}" style="background:green;border-radius:20%; padding-left:10px; padding-right:10px; color:white;">{{car.car_title}}</a>
+                                </h1>
+                                <div class="location">
+                                    <a href="{% url 'car_detail' car.id %}">
+                                        <i class="flaticon-pin"></i>{{car.state}}, {{car.city}}
+                                    </a>
+                                </div>
+                                <ul class="facilities-list clearfix">
+                                    <li>{{car.fuel_type}}</li>
+                                    <li>{{car.miles | intcomma }} miles</li>
+                                    <li>{{car.transmission}}</li>
+                                    <li>{{car.body_style}}</li>
+                                    <li>{{car.color}}</li>
+                                    <li>{{car.year}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+
+
+
+                </div>
+                <!-- Page navigation start -->
+                <div class="pagination-box p-box-2 text-center">
+                    <nav aria-label="Page navigation example">
+                      {% if cars.has_other_pages %}
+                        <ul class="pagination">
+                          {% if cars.has_previous %}
+                              <li class="page-item">
+                                  <a class="page-link" href="?page={{cars.previous_page_number}}"><i class="fa fa-angle-left"></i></a>
+                              </li>
+                          {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                          {% endif %}
+
+                          {% for i in cars.paginator.page_range %}
+                            {% if cars.number == i %}
+                              <li class="page-item"><a class="page-link active" href="#">{{i}}</a></li>
+                            {% else %}
+                              <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if cars.has_next %}
+                              <li class="page-item">
+                                  <a class="page-link" href="?page={{cars.next_page_number}}"><i class="fa fa-angle-right"></i></a>
+                              </li>
+                          {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                          {% endif %}
+
+                        </ul>
+                      {% endif %}
+                    </nav>
+                </div>
+            </div>
+			
+            <div class="col-lg-4 col-md-12">
+                <div class="sidebar-right">
+                    <!-- Advanced search start -->
+                    <div class="widget advanced-search2">
+                        <h3 class="sidebar-title">Search Cars</h3>
+                        <form action="{% url 'search' %}" method="">
+                            <div class="form-group">
+                                <input type="text" name="keyword" placeholder="Search by name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control search-fields" name="model">
+                                    <option selected="true" disabled="disabled">Model</option>
+                                    {% for model in model_search %}
+                                      <option value="{{model}}">{{model}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control search-fields" name="city">
+                                    <option selected="true" disabled="disabled">Location</option>
+                                    {% for city in city_search %}
+                                      <option value="{{city}}">{{city}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control search-fields" name="year">
+                                    <option selected="true" disabled="disabled">Year</option>
+                                    {% for year in year_search %}
+                                      <option value="{{year}}">{{year}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control search-fields" name="body_style">
+                                    <option selected="true" disabled="disabled">Select Type Of Car</option>
+                                    {% for body_style in body_style_search %}
+                                      <option value="{{body_style}}">{{body_style}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="range-slider clearfix">
+                                            <label>Price</label>
+                                            <div data-min="0" data-max="20000000"  data-min-name="min_price" data-max-name="max_price" data-unit="K" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                            <div class="form-group">
+                                <button class="btn btn-block button-theme btn-md">
+                                    <i class="fa fa-search"></i> Search
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Question start -->
+                    <div class="widget question widget-3">
+                        <h5 class="sidebar-title">Follow Us On:</h5>
+                        <div class="social-list clearfix">
+                            <ul>
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured car end -->
+
+{% endblock %}

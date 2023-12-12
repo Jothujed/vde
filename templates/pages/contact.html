@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block title %} | Contact Us {% endblock %}
+{% block content %}
+
+{% load humanize %}
+{% load static %}
+<!-- Contact 2 start -->
+<div class="contact-2 content-area-5" style="margin-top:50px;">
+    <div class="container">
+
+        <!-- WhatsApp Button -->
+<div class="whatsapp-button">
+    <a href="https://wa.me/260972923011?text=Hello%20Vaaka%20Dealer.%20">
+        <img src="{% static 'img/whatsApp.png' %}" alt="WhatsApp Icon">
+        <div class="circle"></div>
+    </a>
+</div>
+
+<style>
+    /* WhatsApp Button Styles */
+    .whatsapp-button {
+        position: fixed;
+        right: 20px; /* Adjust the right position as needed */
+        bottom: 90px; /* Adjust the bottom position as needed */
+        z-index: 1000;
+    }
+
+    .whatsapp-button a {
+        display: block;
+        width: 60px; /* Adjust the width as needed */
+        height: 60px; /* Adjust the height as needed */
+        background-color: none; /* WhatsApp green color */
+        border-radius: 50%;
+        text-align: center;
+        padding-top: 10px; /* Adjust the padding as needed */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .whatsapp-button img {
+        width: 40px; /* Adjust the icon size as needed */
+    }
+
+    .whatsapp-button .circle {
+        content: '';
+        border-radius: 1000px;
+        min-width: calc(300px + 12px);
+        min-height: calc(60px + 12px);
+        border: 6px solid #59CE72;
+        box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .whatsapp-button:hover .circle, .whatsapp-button:focus .circle {
+        opacity: 1;
+    }
+
+    .whatsapp-button::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 6px solid #59CE72;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: ring 1.5s infinite;
+    }
+
+    @keyframes ring {
+        0% {
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+    }
+</style>
+
+
+
+        <!-- Main title -->
+        <div class="main-title text-center">
+            <h1>Contact <span>Us</span></h1>
+        </div>
+        <form action="{% url 'contact' %}" method="POST" enctype="multipart/form-data">
+          {% include 'includes/messages.html' %}
+          {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <!--
+                        <div class="col-md-6 text-left">
+                            <div class="form-group name">
+                                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group email">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group number">
+                                <input type="text" name="phone" class="form-control" placeholder="Number">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group message">
+                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="send-btn text-center">
+                                <button type="submit" class="btn btn-md button-theme">Send Message</button>
+                            </div>
+                        </div>
+                    -->
+                    
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-info-2">
+                        <div class="ci-box">
+                            <div class="icon">
+                                <i class="flaticon-phone"></i>
+                            </div>
+                            <div class="detail">
+                                <h5>Phone:</h5>
+                                <p><a href="#">+260 972 923 011</a></p>
+                            </div>
+                        </div>
+                        <div class="ci-box">
+                            <div class="icon">
+                                <i class="flaticon-mail"></i>
+                            </div>
+                            <div class="detail">
+                                <h5>Email:</h5>
+                                <p><a href="#">vaakadealer@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="ci-box">
+                            <div class="icon">
+                                <i class="flaticon-earth"></i>
+                            </div>
+                            <div class="detail">
+                                <h5>Web:</h5>
+                                <p><a href="#">vaakadealer.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Contact 2 end -->
+
+
+{% endblock %}
